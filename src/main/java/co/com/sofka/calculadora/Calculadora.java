@@ -5,17 +5,22 @@ import java.util.function.IntBinaryOperator;
 import java.util.stream.IntStream;
 
 public class Calculadora {
-    //suma y resta con operador binario
-    IntBinaryOperator add = (a, b) -> a + b;
-    IntBinaryOperator sustract = (a, b) -> a - b;
+    //------------------------------------------------------//
+    //SUMA y RESTA con operador binario
+    IntBinaryOperator add = (numero1, numero2) -> numero1 + numero2;
+    IntBinaryOperator sustract = (numero1, numero2) -> numero1 - numero2;
+    //------------------------------------------------------//
 
-    //multiplicacion
-    IntBinaryOperator mult = (a, b) ->
-            IntStream.range(0, b + 1)
-                    .reduce((acomulador, numero) -> add.applyAsInt(acomulador, a))
+    //------------------------------------------------------//
+    //MULTIPLICACION
+    IntBinaryOperator mult = (numero1, numero2) ->
+            IntStream.range(0, numero2 + 1)
+                    .reduce((acomulador, numero) -> add.applyAsInt(acomulador, numero1))
                     .getAsInt();
+    //------------------------------------------------------//
 
-    //division
+    //------------------------------------------------------//
+    //DIVISION
     BiFunction<Integer, Integer, Integer> divisionEntera = (num, den) -> {
         return IntStream.range(0, den + 1)
                 .reduce((acumulador, numero) -> {
@@ -25,4 +30,6 @@ public class Calculadora {
                     return acumulador;
                 }).getAsInt();
     };
+    //------------------------------------------------------//
+
 }
